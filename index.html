@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário HTML e JS</title>
+    <style>
+        #botao{
+            background-color: black;
+            color: white;
+            border: black solid 2px;
+            border-radius: 4px;
+            font-family: 'AR One Sans', sans-serif;
+            text-shadow: 0px 0px 0px gray;
+        }
+        #texto{
+            font-family: 'AR One Sans', sans-serif;
+            text-shadow: 1px 1px 1px gray;
+        }
+        #num1, #num2{
+            width: 70px ;
+            border-radius: 4px;
+            border:2.5px solid black;
+        }
+        body{
+            font-family: 'AR One Sans', sans-serif;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=AR+One+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 id="texto">Formulário HTML</h1>
+    <form>
+        <input id="num1" type="number">
+        <input id="num2" type="number">
+        <input type="button" value="Submit" id="botao">
+    </form>
+    <p id="resultado"></p>
+
+    <script>
+        const botao = window.document.querySelector("input#botao")
+        botao.addEventListener("click", () =>{
+            const a = window.document.querySelector("input#num1");
+            const b = document.getElementById("num2");
+            const n1 = Number(a.value);
+            const n2 = Number(b.value);
+            const result = document.querySelector("p#resultado")
+            botao.style.background = "red"
+            botao.style.border = "2px red solid"
+            if(n2 > n1){
+                result.innerHTML = `<strong style="background:green; border-radius:2px; color:white; padding:1px 4px 1px 4px">Parabéns!</strong> O formulário foi enviado com sucesso!`
+            }else if(n1 === n2){
+                result.innerHTML = `Os <strong> Números dos Campos</strong> não podem ser <strong style="background:yellow;padding:1px 4px 1px 4px">IGUAIS</strong>`
+            }else{
+                result.innerHTML = `<strong style="background: red; border-radius:2px; padding:1px 4px 1px 4px">ERRO !</strong> O <strong>segundo campo</strong> tem que ser maior que o <strong>primeiro campo</strong> para poder validar com louvor.`
+            }  
+        })
+        botao.addEventListener("mouseover", () => {
+            botao.style.background = "gray"
+            botao.style.border = "2px gray solid"
+            botao.style.transition = "background-color 0.3s"
+            botao.style.transition = "border 0.3s"
+        })
+        botao.addEventListener("mouseout", () => {
+            botao.style.background = "black"
+            botao.style.border = "2px black solid"
+            botao.style.transition = "background-color 0.3s"
+            botao.style.transition = "border 0.3s"
+        })
+    </script>
+</body>
+</html>
